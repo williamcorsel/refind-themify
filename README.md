@@ -1,3 +1,5 @@
+<img src="etc/screenshot_dark.bmp" align="right" width=300 />
+
 # refind-themify
 Easily theme rEFInd using a commandline interface. This repository contains some example themes based on [this](https://github.com/bobafetthotmail/refind-theme-regular) project. The install script has the following options:
 
@@ -26,6 +28,22 @@ Easily theme rEFInd using a commandline interface. This repository contains some
     ```
 3. Fill in the script interaction prompts to set the wanted options.
 
+## Usage
+
+The script will ask you to fill in the following options:
+
+1. Set the install path. If your rEFInd install is not placed in the default `/boot/efi/EFI/refind/` location, change this here.
+
+2. Select icons. The script looks for icon themes in the `themes` folder. This folder currently contains some example icons in `svg` format. See [here](THEMES.md) how they look.
+
+3. Select a background image. The script looks for background images (`svg` or `png`) in the `backgrounds` folder. 
+
+4. Select the icon size. A few default values are provided. The `svg` icons will be converted to `png` at the requested icon size.
+
+5. UI options. You can choose to hide certain UI elements for a cleaner look. `text-only` will remove the text hints that are displayed by default. `all` will also remove all of the secondary options. See [here](https://www.rodsbooks.com/refind/configfile.html) for more details.
+
+6. Pick a font & font size. Leaving this empty will use rEFInd's default font. Otherwise a new font image file will be created.
+
 ## Create a new theme
 
 1. Create a new subfolder in the `themes` folder with the name of your theme.
@@ -35,4 +53,3 @@ Easily theme rEFInd using a commandline interface. This repository contains some
 ## Links
 
 * Official [rEFInd website](https://www.rodsbooks.com/refind/)
-

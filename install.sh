@@ -17,7 +17,6 @@ backgrounds=()
 background_str="Options: "
 
 # Check dependencies
-
 if ! command -v inkscape &> /dev/null
 then
     echo "Inkscape not found!"
@@ -152,10 +151,10 @@ echo
 
 # Select font and font size
 echo "Pick a font:"
-read -p "Default - ${bold}Ubuntu-Mono${normal}: " select_font
+read -p "${bold}Default${normal}: " select_font
 if test -z "$select_font";
 then
-    select_font="Ubuntu-Mono"
+    select_font=""
 fi
 echo
 
@@ -168,7 +167,10 @@ fi
 echo
 
 # Generate font
-bash src/font2png.sh -f $select_font -s $font_size "$FONT_HOME/$select_font-$font_size.png"
+if [[ -n "$select_font" ]];
+then
+    bash src/font2png.sh -f $select_font -s $font_size "$FONT_HOME/$select_font-$font_size.png"
+fi
 
 # Generate icons
 bash src/render_svg.sh $theme_path $BACKGROUND_HOME $size_big $size_small 
@@ -182,7 +184,12 @@ echo "banner $REFIND_THEMES_FOLDER/$theme_name/icons/$background_name" >> theme.
 echo "banner_scale fillscreen" >> theme.conf
 echo "selection_big $REFIND_THEMES_FOLDER/$theme_name/icons/selection-big.png" >> theme.conf
 echo "selection_small $REFIND_THEMES_FOLDER/$theme_name/icons/selection-small.png" >> theme.conf
-echo "font $REFIND_THEMES_FOLDER/$theme_name/font.png" >> theme.conf
+
+if [[ -n "$select_font" ]];
+then
+    echo "font $REFIND_THEMES_FOLDER/$theme_name/font.png" >> theme.conf
+fi
+
 case "$hide_ui" in
     1)
         echo "hideui label,hints" >> theme.conf
