@@ -1,4 +1,4 @@
-<img src="etc/screenshot_dark.bmp" align="right" width=300 />
+<img src="etc/screenshot_regular-minimal.bmp" align="right" width=300 />
 
 # refind-themify
 Easily theme rEFInd using a commandline interface. This repository contains some example themes based on [this](https://github.com/bobafetthotmail/refind-theme-regular) project. The install script has the following options:
